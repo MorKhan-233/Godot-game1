@@ -57,16 +57,11 @@ myfirstgame-2d/
 
 1. 用 [Godot 4.6](https://godotengine.org/download/) 打开项目根目录
 2. 点击编辑器顶部 ▶ 运行按钮
-3. 或直接运行 `Builds/Windows/Fox vs slime.exe`
 
-## 构建导出
-
-项目内置 Windows 导出预设，可在 Godot 编辑器 → `项目` → `导出` 中选择对应平台一键打包。
 
 ## 资源来源
 
-- 像素美术与音效素材来自开源游戏资源网站
-- 像素字体：Uranus Pixel 11px
+- 像素美术与音效素材来自B站游戏制作教程  up：码客二十二  BV：BV1fuCrYFEoG
 
 ---
 
