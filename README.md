@@ -1,10 +1,10 @@
-
+﻿
 # Fox vs Slime 🦊👾
 
 > **Godot 4.6 2D 像素风横版射击小游戏**
 
-![游戏截图](images/screenshot.png)
-*（在此处放入游戏运行截图）*
+![游戏截图](images/Fox%20vs%20Slime.png)
+*游戏运行截图*
 
 ## 项目简介
 
@@ -36,7 +36,7 @@ myfirstgame-2d/
 │   ├── Sprites/         — 像素贴图（狐狸、史莱姆、子弹、背景）
 │   ├── Audio/           — 音效与 BGM
 │   └── Uranus_Pixel_11Px.ttf — 像素字体
-├── Builds/          # 导出的可执行文件（已 gitignore）
+├── Builds/          # 导出的可执行文件
 ├── export_presets.cfg    — 导出配置
 └── project.godot         — 引擎项目配置
 ```
@@ -50,8 +50,8 @@ myfirstgame-2d/
 - **多通道音频管理**：跑步、射击、死亡、BGM 独立播放控制
 - **自适应窗口拉伸**：启用 `canvas_items` 模式适配不同分辨率
 
-![游戏演示](images/gameplay.gif)
-*（在此处放入游戏演示 GIF）*
+![游戏演示](images/Fox%20vs%20Slime.gif)
+*游戏演示动图*
 
 ## 运行方式
 
