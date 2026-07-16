@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://duru8g8s6870p"]
+
+[ext_resource type="Texture2D" uid="uid://cmro4ext1mkke" path="res://AssetBundle/Sprites/ForestBackground.png" id="1_6b728"]
+[ext_resource type="Script" uid="uid://b4x3axae8qcm" path="res://Script/GameManager.gd" id="1_kldst"]
+[ext_resource type="PackedScene" uid="uid://buf4ij2be0nrc" path="res://Scenes/Player.tscn" id="2_pddb1"]
+[ext_resource type="PackedScene" uid="uid://b0oatfd03n0ex" path="res://Scenes/Slime.tscn" id="3_j5yw3"]
+[ext_resource type="FontFile" uid="uid://bvyjj5oaoxgr3" path="res://AssetBundle/Uranus_Pixel_11Px.ttf" id="5_b2bpf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gl6un"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5yw3"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kldst"]
+normal = Vector2(1, 0)
+distance = 0.41105416
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b2bpf"]
+normal = Vector2(-1, 0)
+
+[node name="Node2D" type="Node2D" unique_id=1619295728 node_paths=PackedStringArray("spawn_timer", "score_label", "game_over_label")]
+y_sort_enabled = true
+script = ExtResource("1_kldst")
+slime_scene = ExtResource("3_j5yw3")
+spawn_timer = NodePath("Timer")
+score_label = NodePath("CanvasLayer/Label")
+game_over_label = NodePath("CanvasLayer/GameOverLabel")
+
+[node name="Background 1" type="Sprite2D" parent="." unique_id=681163956]
+position = Vector2(-120, 0)
+texture = ExtResource("1_6b728")
+
+[node name="Background 2" type="Sprite2D" parent="." unique_id=271696425]
+position = Vector2(120, 0)
+texture = ExtResource("1_6b728")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=556133293]
+zoom = Vector2(2.415, 2.415)
+
+[node name="Player" parent="." unique_id=895575604 instance=ExtResource("2_pddb1")]
+position = Vector2(-190, 82)
+move_speed = null
+is_game_over = null
+
+[node name="Boundary" type="Node2D" parent="." unique_id=2011981226]
+position = Vector2(0, 5)
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary" unique_id=2052719207]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D" unique_id=499991333]
+position = Vector2(0, 136)
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary" unique_id=913390798]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary/StaticBody2D2" unique_id=900595356]
+position = Vector2(-1, 43)
+shape = SubResource("WorldBoundaryShape2D_j5yw3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary" unique_id=1135283023]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary/StaticBody2D3" unique_id=925092523]
+position = Vector2(-239, 94)
+shape = SubResource("WorldBoundaryShape2D_kldst")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary" unique_id=1606067325]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary/StaticBody2D4" unique_id=804363765]
+position = Vector2(238, 92)
+shape = SubResource("WorldBoundaryShape2D_b2bpf")
+
+[node name="Timer" type="Timer" parent="." unique_id=1129254783]
+wait_time = 3.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=925641363]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=420811709]
+offset_left = 26.0
+offset_top = 13.0
+offset_right = 191.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 48
+text = "Score : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer" unique_id=504538921]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -11.5
+offset_right = 50.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 120
+text = "Game Over!!!"
+
+[node name="GameOverLabel2" type="Label" parent="CanvasLayer/GameOverLabel" unique_id=895496842]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = 14.0
+offset_right = 244.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 67
+text = "Game By MorKhan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_spawn_slime"]
